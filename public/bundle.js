@@ -21423,13 +21423,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-
 	var SearchUser = __webpack_require__(173);
+	var UserInfo = __webpack_require__(200);
 
 	var GitHub = React.createClass({
 	    displayName: 'GitHub',
 
-	    getIniatialState: function () {
+	    getInitialState: function () {
 	        return {
 	            user: null,
 	            repos: []
@@ -21448,7 +21448,8 @@
 	            React.createElement(SearchUser, {
 	                updateUser: this.updateUser,
 	                updateRepos: this.updateRepos
-	            })
+	            }),
+	            React.createElement(UserInfo, { user: this.state.user, repos: this.state.repos })
 	        );
 	    }
 	});
@@ -23020,6 +23021,54 @@
 	  };
 	};
 
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	function UserInfo(props) {
+	    var userInfo = props.user ? React.createElement(
+	        "div",
+	        { className: "row" },
+	        React.createElement(
+	            "div",
+	            { className: "col-lg-4" },
+	            React.createElement("img", { className: "img-circle", src: props.user.avatar_url, alt: "avatar", width: "140px", height: "140px" }),
+	            React.createElement(
+	                "h2",
+	                null,
+	                props.user.login
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                props.user.name
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                "Followers: ",
+	                props.user.followers,
+	                " / Following: ",
+	                props.user.following
+	            ),
+	            React.createElement(
+	                "p",
+	                null,
+	                React.createElement(
+	                    "a",
+	                    { className: "btn btn-default", href: props.user.html_url, role: "details" },
+	                    "View details"
+	                )
+	            )
+	        )
+	    ) : null;
+	    return userInfo;
+	}
+
+	module.exports = UserInfo;
 
 /***/ }
 /******/ ]);
