@@ -47,11 +47,9 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
 
-	ReactDOM.render(React.createElement(
-	  'h1',
-	  null,
-	  'testaaaae'
-	), document.getElementById('app'));
+	var GitHub = __webpack_require__(172);
+
+	ReactDOM.render(React.createElement(GitHub, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21419,6 +21417,68 @@
 
 	module.exports = ReactDOMNullInputValuePropHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var GitHub = React.createClass({
+	    displayName: "GitHub",
+
+	    handleSubmit: function (e) {
+	        e.preventDefault();
+	        console.log(this.refs.username.value);
+	    },
+	    render: function () {
+	        return React.createElement(
+	            "div",
+	            { className: "container" },
+	            React.createElement(
+	                "div",
+	                { className: "jumbotron" },
+	                React.createElement(
+	                    "h1",
+	                    null,
+	                    "GitHub Info"
+	                ),
+	                React.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    React.createElement(
+	                        "form",
+	                        { onSubmit: this.handleSubmit },
+	                        React.createElement(
+	                            "div",
+	                            { className: "form-group" },
+	                            React.createElement(
+	                                "label",
+	                                null,
+	                                "Username"
+	                            ),
+	                            React.createElement("input", {
+	                                type: "text",
+	                                ref: "username",
+	                                className: "form-control",
+	                                placeholder: "Ex: rtancman"
+	                            })
+	                        ),
+	                        React.createElement(
+	                            "button",
+	                            {
+	                                type: "submit",
+	                                className: "btn btn-primary" },
+	                            "Buscar"
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = GitHub;
 
 /***/ }
 /******/ ]);
