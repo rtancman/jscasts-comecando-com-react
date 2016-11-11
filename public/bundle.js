@@ -21521,6 +21521,11 @@
 	    }
 	});
 
+	SearchUser.propTypes = {
+	    updateUser: React.PropTypes.func.isRequired,
+	    updateRepos: React.PropTypes.func.isRequired
+	};
+
 	module.exports = SearchUser;
 
 /***/ },
@@ -23067,6 +23072,11 @@
 	    ) : null;
 	    return userInfo;
 	}
+
+	UserInfo.propTypes = {
+	    user: React.PropTypes.object,
+	    repos: React.PropTypes.array
+	};
 
 	module.exports = UserInfo;
 
