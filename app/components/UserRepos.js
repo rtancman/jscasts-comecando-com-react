@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 var UserRepos = React.createClass({
     getInitialState: function() {
@@ -34,4 +34,4 @@ var UserRepos = React.createClass({
     }
 });
 
-module.exports = UserRepos;
+export default UserRepos;
