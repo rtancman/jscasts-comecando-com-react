@@ -21507,15 +21507,17 @@
 	    displayName: 'SearchUser',
 
 	    handleSubmit: function handleSubmit(e) {
+	        var _this = this;
+
 	        e.preventDefault();
 
 	        _GitHubUser2.default.getByUsername(this.refs.username.value).then(function (resp) {
-	            this.props.updateUser(resp.data);
-	        }.bind(this));
+	            _this.props.updateUser(resp.data);
+	        });
 
 	        _GitHubUser2.default.getReposByUsername(this.refs.username.value).then(function (resp) {
-	            this.props.updateRepos(resp.data);
-	        }.bind(this));
+	            _this.props.updateRepos(resp.data);
+	        });
 	    },
 	    render: function render() {
 	        return _react2.default.createElement(
@@ -23096,7 +23098,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function UserInfo(props) {
+	var UserInfo = function UserInfo(props) {
 	    var userInfo = props.user ? _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
@@ -23139,7 +23141,7 @@
 	        )
 	    ) : null;
 	    return userInfo;
-	}
+	};
 
 	UserInfo.propTypes = {
 	    user: _react2.default.PropTypes.object,
