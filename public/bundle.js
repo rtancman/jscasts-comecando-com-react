@@ -21439,6 +21439,8 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -21447,39 +21449,62 @@
 
 	var _SearchUser2 = _interopRequireDefault(_SearchUser);
 
-	var _UserInfo = __webpack_require__(200);
+	var _UserInfo = __webpack_require__(174);
 
 	var _UserInfo2 = _interopRequireDefault(_UserInfo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var GitHub = _react2.default.createClass({
-	    displayName: 'GitHub',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	    getInitialState: function getInitialState() {
-	        return {
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GitHub = function (_React$Component) {
+	    _inherits(GitHub, _React$Component);
+
+	    function GitHub(props) {
+	        _classCallCheck(this, GitHub);
+
+	        var _this = _possibleConstructorReturn(this, (GitHub.__proto__ || Object.getPrototypeOf(GitHub)).call(this, props));
+
+	        _this.state = {
 	            user: null,
 	            repos: []
 	        };
-	    },
-	    updateUser: function updateUser(user) {
-	        this.setState({ user: user });
-	    },
-	    updateRepos: function updateRepos(repos) {
-	        this.setState({ repos: repos });
-	    },
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'container' },
-	            _react2.default.createElement(_SearchUser2.default, {
-	                updateUser: this.updateUser,
-	                updateRepos: this.updateRepos
-	            }),
-	            _react2.default.createElement(_UserInfo2.default, { user: this.state.user, repos: this.state.repos })
-	        );
+	        _this.updateUser = _this.updateUser.bind(_this);
+	        _this.updateRepos = _this.updateRepos.bind(_this);
+	        return _this;
 	    }
-	});
+
+	    _createClass(GitHub, [{
+	        key: 'updateUser',
+	        value: function updateUser(user) {
+	            this.setState({ user: user });
+	        }
+	    }, {
+	        key: 'updateRepos',
+	        value: function updateRepos(repos) {
+	            this.setState({ repos: repos });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'container' },
+	                _react2.default.createElement(_SearchUser2.default, {
+	                    updateUser: this.updateUser,
+	                    updateRepos: this.updateRepos
+	                }),
+	                _react2.default.createElement(_UserInfo2.default, { user: this.state.user, repos: this.state.repos })
+	            );
+	        }
+	    }]);
+
+	    return GitHub;
+	}(_react2.default.Component);
 
 	exports.default = GitHub;
 
@@ -21493,74 +21518,100 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _GitHubUser = __webpack_require__(174);
+	var _GitHubUser = __webpack_require__(176);
 
 	var _GitHubUser2 = _interopRequireDefault(_GitHubUser);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var SearchUser = _react2.default.createClass({
-	    displayName: 'SearchUser',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	    handleSubmit: function handleSubmit(e) {
-	        var _this = this;
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	        e.preventDefault();
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	        _GitHubUser2.default.getByUsername(this.refs.username.value).then(function (resp) {
-	            _this.props.updateUser(resp.data);
-	        });
+	var SearchUser = function (_React$Component) {
+	    _inherits(SearchUser, _React$Component);
 
-	        _GitHubUser2.default.getReposByUsername(this.refs.username.value).then(function (resp) {
-	            _this.props.updateRepos(resp.data);
-	        });
-	    },
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'jumbotron' },
-	            _react2.default.createElement(
-	                'h1',
-	                null,
-	                'GitHub Info'
-	            ),
-	            _react2.default.createElement(
+	    function SearchUser(props) {
+	        _classCallCheck(this, SearchUser);
+
+	        var _this = _possibleConstructorReturn(this, (SearchUser.__proto__ || Object.getPrototypeOf(SearchUser)).call(this, props));
+
+	        _this.handleSubmit = _this.handleSubmit.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(SearchUser, [{
+	        key: 'handleSubmit',
+	        value: function handleSubmit(e) {
+	            var _this2 = this;
+
+	            e.preventDefault();
+
+	            _GitHubUser2.default.getByUsername(this.refs.username.value).then(function (resp) {
+	                _this2.props.updateUser(resp.data);
+	            });
+
+	            _GitHubUser2.default.getReposByUsername(this.refs.username.value).then(function (resp) {
+	                _this2.props.updateRepos(resp.data);
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
 	                'div',
-	                { className: 'row' },
+	                { className: 'jumbotron' },
 	                _react2.default.createElement(
-	                    'form',
-	                    { onSubmit: this.handleSubmit },
+	                    'h1',
+	                    null,
+	                    'GitHub Info'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
 	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'form-group' },
+	                        'form',
+	                        { onSubmit: this.handleSubmit },
 	                        _react2.default.createElement(
-	                            'label',
-	                            null,
-	                            'Username'
+	                            'div',
+	                            { className: 'form-group' },
+	                            _react2.default.createElement(
+	                                'label',
+	                                null,
+	                                'Username'
+	                            ),
+	                            _react2.default.createElement('input', {
+	                                type: 'text',
+	                                ref: 'username',
+	                                className: 'form-control',
+	                                placeholder: 'Ex: rtancman'
+	                            })
 	                        ),
-	                        _react2.default.createElement('input', {
-	                            type: 'text',
-	                            ref: 'username',
-	                            className: 'form-control',
-	                            placeholder: 'Ex: rtancman'
-	                        })
-	                    ),
-	                    _react2.default.createElement(
-	                        'button',
-	                        {
-	                            type: 'submit',
-	                            className: 'btn btn-primary' },
-	                        'Buscar'
+	                        _react2.default.createElement(
+	                            'button',
+	                            {
+	                                type: 'submit',
+	                                className: 'btn btn-primary' },
+	                            'Buscar'
+	                        )
 	                    )
 	                )
-	            )
-	        );
-	    }
-	});
+	            );
+	        }
+	    }]);
+
+	    return SearchUser;
+	}(_react2.default.Component);
+
+	;
 
 	SearchUser.propTypes = {
 	    updateUser: _react2.default.PropTypes.func.isRequired,
@@ -21576,10 +21627,196 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _UserRepos = __webpack_require__(175);
+
+	var _UserRepos2 = _interopRequireDefault(_UserRepos);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var UserInfo = function UserInfo(_ref) {
+	    var user = _ref.user,
+	        repos = _ref.repos;
+
+	    var userInfo = user ? _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'col-lg-4' },
+	            _react2.default.createElement('img', { className: 'img-circle', src: user.avatar_url, alt: 'avatar', width: '140px', height: '140px' }),
+	            _react2.default.createElement(
+	                'h2',
+	                null,
+	                user.login
+	            ),
+	            _react2.default.createElement(
+	                'p',
+	                null,
+	                user.name
+	            ),
+	            _react2.default.createElement(
+	                'p',
+	                null,
+	                'Followers: ',
+	                user.followers,
+	                ' / Following: ',
+	                user.following
+	            ),
+	            _react2.default.createElement(
+	                'p',
+	                null,
+	                _react2.default.createElement(
+	                    'a',
+	                    { className: 'btn btn-default', href: user.html_url, role: 'details' },
+	                    'View details'
+	                )
+	            )
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'col-lg-8' },
+	            _react2.default.createElement(_UserRepos2.default, { repos: repos })
+	        )
+	    ) : null;
+	    return userInfo;
+	};
+
+	UserInfo.propTypes = {
+	    user: _react2.default.PropTypes.object,
+	    repos: _react2.default.PropTypes.array
+	};
+
+	exports.default = UserInfo;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserRepos = function (_React$Component) {
+	    _inherits(UserRepos, _React$Component);
+
+	    function UserRepos(props) {
+	        _classCallCheck(this, UserRepos);
+
+	        var _this = _possibleConstructorReturn(this, (UserRepos.__proto__ || Object.getPrototypeOf(UserRepos)).call(this, props));
+
+	        _this.state = {
+	            reposCount: 0
+	        };
+	        return _this;
+	    }
+
+	    _createClass(UserRepos, [{
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(props) {
+	            this.setState({ reposCount: props.repos.length });
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var repos = this.props.repos;
+
+	            var reposList = repos.map(function (repo, key) {
+	                return _react2.default.createElement(
+	                    "div",
+	                    { key: key, className: "thumbnail" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "caption" },
+	                        _react2.default.createElement(
+	                            "h3",
+	                            null,
+	                            repo.name,
+	                            " ",
+	                            _react2.default.createElement(
+	                                "span",
+	                                { className: "badge" },
+	                                repo.stargazers_count,
+	                                " STARS"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "p",
+	                            null,
+	                            repo.description
+	                        ),
+	                        _react2.default.createElement(
+	                            "p",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: repo.html_url, className: "btn btn-primary", role: "button" },
+	                                "Repository"
+	                            ),
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: repo.html_url + '/issues', className: "btn btn-default", role: "button" },
+	                                "Issues"
+	                            )
+	                        )
+	                    )
+	                );
+	            });
+
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                    "h2",
+	                    null,
+	                    this.state.reposCount,
+	                    " Repositories"
+	                ),
+	                reposList
+	            );
+	        }
+	    }]);
+
+	    return UserRepos;
+	}(_react2.default.Component);
+
+	;
+
+	exports.default = UserRepos;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _axios = __webpack_require__(175);
+	var _axios = __webpack_require__(177);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -21598,20 +21835,20 @@
 	exports.default = GitHubUser;
 
 /***/ },
-/* 175 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(176);
+	module.exports = __webpack_require__(178);
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
-	var bind = __webpack_require__(178);
-	var Axios = __webpack_require__(179);
+	var utils = __webpack_require__(179);
+	var bind = __webpack_require__(180);
+	var Axios = __webpack_require__(181);
 
 	/**
 	 * Create an instance of Axios
@@ -21644,15 +21881,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(197);
-	axios.CancelToken = __webpack_require__(198);
-	axios.isCancel = __webpack_require__(194);
+	axios.Cancel = __webpack_require__(199);
+	axios.CancelToken = __webpack_require__(200);
+	axios.isCancel = __webpack_require__(196);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(199);
+	axios.spread = __webpack_require__(201);
 
 	module.exports = axios;
 
@@ -21661,12 +21898,12 @@
 
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(178);
+	var bind = __webpack_require__(180);
 
 	/*global toString:true*/
 
@@ -21966,7 +22203,7 @@
 
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21983,17 +22220,17 @@
 
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(180);
-	var utils = __webpack_require__(177);
-	var InterceptorManager = __webpack_require__(191);
-	var dispatchRequest = __webpack_require__(192);
-	var isAbsoluteURL = __webpack_require__(195);
-	var combineURLs = __webpack_require__(196);
+	var defaults = __webpack_require__(182);
+	var utils = __webpack_require__(179);
+	var InterceptorManager = __webpack_require__(193);
+	var dispatchRequest = __webpack_require__(194);
+	var isAbsoluteURL = __webpack_require__(197);
+	var combineURLs = __webpack_require__(198);
 
 	/**
 	 * Create a new instance of Axios
@@ -22074,13 +22311,13 @@
 
 
 /***/ },
-/* 180 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(177);
-	var normalizeHeaderName = __webpack_require__(181);
+	var utils = __webpack_require__(179);
+	var normalizeHeaderName = __webpack_require__(183);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -22097,10 +22334,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(182);
+	    adapter = __webpack_require__(184);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(182);
+	    adapter = __webpack_require__(184);
 	  }
 	  return adapter;
 	}
@@ -22167,12 +22404,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 181 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -22185,18 +22422,18 @@
 
 
 /***/ },
-/* 182 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(177);
-	var settle = __webpack_require__(183);
-	var buildURL = __webpack_require__(186);
-	var parseHeaders = __webpack_require__(187);
-	var isURLSameOrigin = __webpack_require__(188);
-	var createError = __webpack_require__(184);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(189);
+	var utils = __webpack_require__(179);
+	var settle = __webpack_require__(185);
+	var buildURL = __webpack_require__(188);
+	var parseHeaders = __webpack_require__(189);
+	var isURLSameOrigin = __webpack_require__(190);
+	var createError = __webpack_require__(186);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(191);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -22292,7 +22529,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(190);
+	      var cookies = __webpack_require__(192);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -22369,12 +22606,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 183 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(184);
+	var createError = __webpack_require__(186);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -22400,12 +22637,12 @@
 
 
 /***/ },
-/* 184 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(185);
+	var enhanceError = __webpack_require__(187);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -22423,7 +22660,7 @@
 
 
 /***/ },
-/* 185 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22448,12 +22685,12 @@
 
 
 /***/ },
-/* 186 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -22522,12 +22759,12 @@
 
 
 /***/ },
-/* 187 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	/**
 	 * Parse headers into an object
@@ -22565,12 +22802,12 @@
 
 
 /***/ },
-/* 188 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -22639,7 +22876,7 @@
 
 
 /***/ },
-/* 189 */
+/* 191 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22681,12 +22918,12 @@
 
 
 /***/ },
-/* 190 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -22740,12 +22977,12 @@
 
 
 /***/ },
-/* 191 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -22798,15 +23035,15 @@
 
 
 /***/ },
-/* 192 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
-	var transformData = __webpack_require__(193);
-	var isCancel = __webpack_require__(194);
-	var defaults = __webpack_require__(180);
+	var utils = __webpack_require__(179);
+	var transformData = __webpack_require__(195);
+	var isCancel = __webpack_require__(196);
+	var defaults = __webpack_require__(182);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -22883,12 +23120,12 @@
 
 
 /***/ },
-/* 193 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(177);
+	var utils = __webpack_require__(179);
 
 	/**
 	 * Transform the data for a request or a response
@@ -22909,7 +23146,7 @@
 
 
 /***/ },
-/* 194 */
+/* 196 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22920,7 +23157,7 @@
 
 
 /***/ },
-/* 195 */
+/* 197 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22940,7 +23177,7 @@
 
 
 /***/ },
-/* 196 */
+/* 198 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22958,7 +23195,7 @@
 
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22983,12 +23220,12 @@
 
 
 /***/ },
-/* 198 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(197);
+	var Cancel = __webpack_require__(199);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -23046,7 +23283,7 @@
 
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23077,169 +23314,6 @@
 	  };
 	};
 
-
-/***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _UserRepos = __webpack_require__(201);
-
-	var _UserRepos2 = _interopRequireDefault(_UserRepos);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var UserInfo = function UserInfo(_ref) {
-	    var user = _ref.user,
-	        repos = _ref.repos;
-
-	    var userInfo = user ? _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'col-lg-4' },
-	            _react2.default.createElement('img', { className: 'img-circle', src: user.avatar_url, alt: 'avatar', width: '140px', height: '140px' }),
-	            _react2.default.createElement(
-	                'h2',
-	                null,
-	                user.login
-	            ),
-	            _react2.default.createElement(
-	                'p',
-	                null,
-	                user.name
-	            ),
-	            _react2.default.createElement(
-	                'p',
-	                null,
-	                'Followers: ',
-	                user.followers,
-	                ' / Following: ',
-	                user.following
-	            ),
-	            _react2.default.createElement(
-	                'p',
-	                null,
-	                _react2.default.createElement(
-	                    'a',
-	                    { className: 'btn btn-default', href: user.html_url, role: 'details' },
-	                    'View details'
-	                )
-	            )
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'col-lg-8' },
-	            _react2.default.createElement(_UserRepos2.default, { repos: repos })
-	        )
-	    ) : null;
-	    return userInfo;
-	};
-
-	UserInfo.propTypes = {
-	    user: _react2.default.PropTypes.object,
-	    repos: _react2.default.PropTypes.array
-	};
-
-	exports.default = UserInfo;
-
-/***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var UserRepos = _react2.default.createClass({
-	    displayName: "UserRepos",
-
-	    getInitialState: function getInitialState() {
-	        return {
-	            reposCount: 0
-	        };
-	    },
-	    componentWillReceiveProps: function componentWillReceiveProps(props) {
-	        this.setState({ reposCount: props.repos.length });
-	    },
-	    render: function render() {
-	        var repos = this.props.repos;
-
-	        var reposList = repos.map(function (repo, key) {
-	            return _react2.default.createElement(
-	                "div",
-	                { key: key, className: "thumbnail" },
-	                _react2.default.createElement(
-	                    "div",
-	                    { className: "caption" },
-	                    _react2.default.createElement(
-	                        "h3",
-	                        null,
-	                        repo.name,
-	                        " ",
-	                        _react2.default.createElement(
-	                            "span",
-	                            { className: "badge" },
-	                            repo.stargazers_count,
-	                            " STARS"
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "p",
-	                        null,
-	                        repo.description
-	                    ),
-	                    _react2.default.createElement(
-	                        "p",
-	                        null,
-	                        _react2.default.createElement(
-	                            "a",
-	                            { href: repo.html_url, className: "btn btn-primary", role: "button" },
-	                            "Repository"
-	                        ),
-	                        _react2.default.createElement(
-	                            "a",
-	                            { href: repo.html_url + '/issues', className: "btn btn-default", role: "button" },
-	                            "Issues"
-	                        )
-	                    )
-	                )
-	            );
-	        });
-
-	        return _react2.default.createElement(
-	            "div",
-	            null,
-	            _react2.default.createElement(
-	                "h2",
-	                null,
-	                this.state.reposCount,
-	                " Repositories"
-	            ),
-	            reposList
-	        );
-	    }
-	});
-
-	exports.default = UserRepos;
 
 /***/ }
 /******/ ]);

@@ -1,15 +1,18 @@
 import React from 'react';
 
-var UserRepos = React.createClass({
-    getInitialState: function() {
-        return {
+class UserRepos extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
             reposCount: 0,
-        };
-    },
-    componentWillReceiveProps: function(props) {
+        }
+    }
+
+    componentWillReceiveProps(props) {
         this.setState({reposCount: props.repos.length});
-    },
-    render: function() {
+    }
+
+    render() {
         const {repos} = this.props;
         const reposList = repos.map(function(repo, key) {
             return (
@@ -33,6 +36,6 @@ var UserRepos = React.createClass({
             </div>
         );
     }
-});
+};
 
 export default UserRepos;
