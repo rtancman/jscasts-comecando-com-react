@@ -23098,38 +23098,41 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var UserInfo = function UserInfo(props) {
-	    var userInfo = props.user ? _react2.default.createElement(
+	var UserInfo = function UserInfo(_ref) {
+	    var user = _ref.user,
+	        repos = _ref.repos;
+
+	    var userInfo = user ? _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'col-lg-4' },
-	            _react2.default.createElement('img', { className: 'img-circle', src: props.user.avatar_url, alt: 'avatar', width: '140px', height: '140px' }),
+	            _react2.default.createElement('img', { className: 'img-circle', src: user.avatar_url, alt: 'avatar', width: '140px', height: '140px' }),
 	            _react2.default.createElement(
 	                'h2',
 	                null,
-	                props.user.login
+	                user.login
 	            ),
 	            _react2.default.createElement(
 	                'p',
 	                null,
-	                props.user.name
+	                user.name
 	            ),
 	            _react2.default.createElement(
 	                'p',
 	                null,
 	                'Followers: ',
-	                props.user.followers,
+	                user.followers,
 	                ' / Following: ',
-	                props.user.following
+	                user.following
 	            ),
 	            _react2.default.createElement(
 	                'p',
 	                null,
 	                _react2.default.createElement(
 	                    'a',
-	                    { className: 'btn btn-default', href: props.user.html_url, role: 'details' },
+	                    { className: 'btn btn-default', href: user.html_url, role: 'details' },
 	                    'View details'
 	                )
 	            )
@@ -23137,7 +23140,7 @@
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'col-lg-8' },
-	            _react2.default.createElement(_UserRepos2.default, { repos: props.repos })
+	            _react2.default.createElement(_UserRepos2.default, { repos: repos })
 	        )
 	    ) : null;
 	    return userInfo;
@@ -23178,7 +23181,9 @@
 	        this.setState({ reposCount: props.repos.length });
 	    },
 	    render: function render() {
-	        var repos = this.props.repos.map(function (repo, key) {
+	        var repos = this.props.repos;
+
+	        var reposList = repos.map(function (repo, key) {
 	            return _react2.default.createElement(
 	                "div",
 	                { key: key, className: "thumbnail" },
@@ -23229,7 +23234,7 @@
 	                this.state.reposCount,
 	                " Repositories"
 	            ),
-	            repos
+	            reposList
 	        );
 	    }
 	});
